@@ -1,0 +1,51 @@
+using System;
+
+public class Device
+{
+    public string Brand { get; set; }
+
+    public Device(string brand)
+    {
+        Brand = brand;
+    }
+
+    public virtual void PowerOn()
+    {
+        Console.WriteLine($"{Brand} включён.");
+    }
+}
+
+public class Laptop : Device
+{
+    public int Ram { get; set; }
+    public int Battery { get; set; }
+
+    public Laptop(string brand, int ram, int battery) : base(brand)
+    {
+        Ram =64;
+        Battery = 100;
+    }
+
+    public override void PowerOn()
+    {
+        base.PowerOn();
+    }
+
+    public void Work()
+    {
+        Console.WriteLine($"Ноутбук {Brand}, ОЗУ: {Ram} ГБ, заряд: {Battery}%.");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Laptop myLaptop = new Laptop("Dell", 16, 85);
+        myLaptop.PowerOn();
+        myLaptop.Work();
+
+        Laptop anotherLaptop = new Laptop("HP", 0, 110);
+        anotherLaptop.Work();
+    }
+}
