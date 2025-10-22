@@ -1,0 +1,46 @@
+using System;
+
+namespace App2
+{
+    internal class Program
+    {
+        static bool IsStringLongEnough(string str, int size)
+        {
+            if (str.Length == size || str.Length > size)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Введите строку: ");
+            string str = Console.ReadLine();
+            if (string.IsNullOrEmpty(str))
+            {
+                Console.WriteLine("Строка пуста или содержит null.");
+                return;
+            }
+            Console.Write("Введите минимальную длину: ");
+            if (!int.TryParse(Console.ReadLine(), out int val) || val < 0)
+            {
+                Console.WriteLine("Минимальная длина должна быть больше 0.");
+                return;
+            }
+            if (IsStringLongEnough(str, val) == true)
+            {
+                Console.WriteLine($"Строка '{str}' достаточно длинная.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine($"Строка '{str}' слишком короткая!");
+                return;
+            }
+        }
+    }
+}
+
