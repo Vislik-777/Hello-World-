@@ -1,0 +1,51 @@
+using System;
+public class Person
+{
+    // Поля
+    private string name; // имя
+    private int age;     // возраст
+                         // Свойства
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value >= 0 && value <= 120)
+            {
+                age = value;
+            }
+            else
+            {
+                Console.WriteLine("Возраст должен быть от 0 до 120!");
+                age = 0; // Установка возраста по умолчанию
+            }
+        }
+    }
+// Конструктор
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age; // Здесь вызовется свойство Age, которое проверит значение
+    }
+    // Метод SayHello
+    public void SayHello()
+    {
+        Console.WriteLine($"Привет, я {Name}, мне {Age} лет!");
+    }
+    // Главная программа
+    public static void Main(string[] args)
+    {
+        // Создаем объект с корректными данными
+        Person person1 = new Person("Данил", 17);
+        person1.SayHello();  // Привет, я Диана, мне 16 лет!
+                             // Создаем объект с некорректным возрастом
+        Person person2 = new Person("Данил", 150);
+        person2.SayHello();  // Возраст должен быть от 0 до 120! Привет, я Диана, мне 0 лет!
+
+    }
+}
