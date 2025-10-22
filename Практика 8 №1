@@ -1,0 +1,29 @@
+using System;
+
+namespace App1
+{
+    internal class Program
+    {
+        static double CalculatePerimeter(double x, double y)
+        {
+            return 2 * (x + y);
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Введите длину прямоугольника (1-10): ");
+            if (!double.TryParse(Console.ReadLine(), out double height) || height > 10 || height < 1)
+            {
+                Console.WriteLine("Ошибка ввода. Значение должно быть в диапазоне (1-10).");
+                return;
+            }
+            Console.Write("Введите ширину прямоугольника (1-10): ");
+            if (!double.TryParse(Console.ReadLine(), out double width) || width > 10 || width < 1)
+            {
+                Console.WriteLine("Ошибка ввода. Значение должно быть в диапазоне (1-10).");
+                return;
+            }
+            Console.WriteLine("Периметр прямоугольника: " + CalculatePerimeter(height, width).ToString("F2"));
+        }
+    }
+}
+
