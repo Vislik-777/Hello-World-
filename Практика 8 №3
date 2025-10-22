@@ -1,0 +1,30 @@
+using System;
+
+namespace App3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите число: ");
+            if (!int.TryParse(Console.ReadLine(), out int number))
+            {
+                Console.WriteLine("Ошибка ввода.");
+                return;
+            }
+            Console.Write("Введите величину увеличения: ");
+            if (!int.TryParse(Console.ReadLine(), out int numPlus) || numPlus < 0)
+            {
+                Console.WriteLine("Ошибка ввода.");
+                return;
+            }
+            Console.WriteLine("До увеличения: " + number);
+            IncreaseNumber(ref number, numPlus);
+            Console.WriteLine("После увеличения: " + number);
+        }
+        static void IncreaseNumber(ref int number, int numPlus)
+        {
+            number += numPlus;
+        }
+    }
+}
