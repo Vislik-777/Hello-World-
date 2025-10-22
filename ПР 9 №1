@@ -42,7 +42,7 @@ public class Person
     {
         // Создаем объект с корректными данными
         Person person1 = new Person("Данил", 17);
-        person1.SayHello();  // Привет, я Диана, мне 16 лет!
+        person1.SayHello();  // Привет, я Данил, мне 17 лет!
                              // Создаем объект с некорректным возрастом
         Person person2 = new Person("Данил", 150);
         person2.SayHello();  // Возраст должен быть от 0 до 120! Привет, я Диана, мне 0 лет!
