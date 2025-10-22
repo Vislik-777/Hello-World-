@@ -1,0 +1,59 @@
+using System;
+
+public class Book
+{
+    
+    public string Title { get; set; }
+    public int Pages { get; set; }
+
+  
+    public Book(string title, int pages)
+    {
+        Title = title;
+        
+        if (pages >= 1 && pages <= 5000)
+        {
+            Pages = pages;
+        }
+        else
+        {
+            Pages = 1; 
+            Console.WriteLine($"Ошибка: Количество страниц должно быть от 1 до 5000. Установлено значение: {Pages}");
+        }
+    }
+
+  
+    public Book(string title) : this(title, 100)
+    {
+    }
+
+    
+    public Book() : this("Без названия", 1)
+    {
+    }
+
+   
+    public void Read()
+    {
+        Console.WriteLine($"Читаю книгу \"{Title}\", страниц: {Pages}.");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        
+        Book book1 = new Book("Война и мир", 1200);
+        Book book2 = new Book("1984"); 
+        Book book3 = new Book();       
+        book1.Read();
+        book2.Read();
+        book3.Read();
+
+      
+        Console.WriteLine("\nПопытка создать книгу с 0 страниц:");
+        Book invalidBook = new Book("Некорректная книга", 0);
+        invalidBook.Read();
+    }
+}
