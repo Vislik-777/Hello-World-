@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Практическая8_5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите число n (0–20): ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int n))
+            {
+                if (n < 0 || n > 20)
+                {
+                    Console.WriteLine("Ошибка: Число должно быть в диапазоне 0–20.");
+                }
+                else
+                {
+                    long factorial = CalculateFactorial(n);
+                    Console.WriteLine($"Факториал {n}! = {factorial}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: Введите корректное число.");
+            }
+        }
+        static long CalculateFactorial(int n)
+        {
+            long result = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+    }
+}
+
+
