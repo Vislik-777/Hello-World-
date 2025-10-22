@@ -1,0 +1,60 @@
+using System;
+
+public class Animal
+{
+    public string Name { get; set; }
+    public int Lives { get; set; }
+
+    public Animal(string name, int lives)
+    {
+        Name = name;
+        Lives = lives;
+    }
+
+    public virtual void Speak()
+    {
+        Console.WriteLine($"<{Name}> издаёт звук.");
+    }
+
+    public virtual void LivesReduction()
+    {
+        Lives--;
+        Console.WriteLine($"<{Name}> — уменьшает жизни. Осталось жизней: {Lives}.");
+    }
+}
+
+public class Cat : Animal
+{
+    public Cat(string name, int lives) : base(name, lives)
+    {
+    }
+
+    public override void Speak()
+    {
+        Console.WriteLine($"<{Name}> мяукнул.");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Создание объектов Cat
+        Cat murzik = new Cat("Мурзик", 9);
+        Cat barsik = new Cat("Барсик", 9);
+
+        // Вызов методов
+        murzik.Speak();
+        murzik.LivesReduction();
+
+        barsik.Speak();
+        barsik.LivesReduction();
+
+        // Пример вывода из задания
+        Console.WriteLine("\nПример вывода:");
+        Console.WriteLine("Мурзик издаёт звук.");
+        Console.WriteLine("Мурзик мяукнул, осталось жизней: 8.");
+        Console.WriteLine("Мурзик издаёт звук.");
+        Console.WriteLine("Барсик мяукнул, осталось жизней: 8.");
+    }
+}
