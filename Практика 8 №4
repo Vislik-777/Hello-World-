@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Практика8_4
+{
+    internal class Program
+    {
+        public static bool SplitIntoWords(string input, out string word, out int count)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                word = "";
+                count = 0;
+                return false;
+            }
+            string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            word = words[0];
+            count = words.Length;
+            return true;
+        }
+        static void Main()
+        {
+            Console.Write("Введите строку: ");
+            string input = Console.ReadLine();
+            string word1;
+            int colWords;
+            if (!SplitIntoWords(input, out word1, out colWords))
+            {
+                Console.WriteLine("Ошибка: Строка пуста или содержит только пробелы.");
+                return;
+            }
+            Console.WriteLine($"Первое слово: {word1}");
+            Console.WriteLine($"Количество слов: {colWords}");
+        }
+    }
+}
