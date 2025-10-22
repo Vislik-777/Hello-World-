@@ -1,0 +1,42 @@
+using System;
+
+public class Employee
+{
+    public string Name { get; set; }
+    public decimal Salary { get; set; }
+
+
+    public Employee(string name, decimal salary)
+    {
+        Name = name;
+        Salary = salary;
+    }
+
+
+    public Employee(string name) : this(name, 50000)
+    {
+    }
+
+    public void Work()
+    {
+        Console.WriteLine($"«{Name} работает, зарплата: [{Salary}].»");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Employee employee1 = new Employee("Вислогузов", 80000);
+        Employee employee2 = new Employee("Трунников");
+
+        employee1.Work();
+        employee2.Work();
+
+
+        Console.WriteLine("\nПопытка задать отрицательную зарплату:");
+        employee2.Salary = -1000;
+        employee2.Work();
+        Console.WriteLine("Зарплата не может быть отрицательной!");
+    }
+}
