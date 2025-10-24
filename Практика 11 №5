@@ -1,0 +1,82 @@
+using System;
+
+public class Product
+{
+
+    private string name;
+    private decimal price;
+    private int discount;
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; } 
+    }
+
+    public decimal Price
+    {
+        get { return price; }
+        set
+        {
+            if (value < 0)
+            {
+                Console.WriteLine("Ошибка: Цена не может быть отрицательной!");
+            }
+            else
+            {
+                price = value;
+            }
+        }
+    }
+
+    public int Discount
+    {
+        get { return discount; }
+        set
+        {
+            if (value >= 0 && value <= 100)
+            {
+                discount = value;
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: Скидка должна быть от 0 до 100!");
+            }
+        }
+    }
+
+    // Свойство только для чтения
+    public decimal FinalPrice
+    {
+        get { return Price * (1 - (decimal)Discount / 100); }
+    }
+
+    // Конструктор
+    public Product(string name, decimal price, int discount)
+    {
+        Name = name;
+        Price = price;
+        Discount = discount;
+    }
+
+    // Метод Show
+    public void Show()
+    {
+        Console.WriteLine($"{Name}: {Price} (скидка {Discount}%)");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Создаем товары
+        Product laptop = new Product("Ноутбук", 800, 20);
+        Product keyboard = new Product("Клавиатура", 900, 10);
+
+
+        laptop.Show();
+        keyboard.Show();
+    }
+}
+
